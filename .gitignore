@@ -1,0 +1,19 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Dependencies
+node_modules/
+built/
+
+# Auto-generated code
+mochawesome-report
+
+# Misc
+.DS_Store
+.env
+
+# Editors
+.idea
+.vscode
+
+# Reports
+reports/
