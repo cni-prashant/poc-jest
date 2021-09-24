@@ -15,9 +15,4 @@ test('verify basic filters functionality', async () => {
   res = await helpers.getResponseWithAuthToken(accessToken, generic.myAccount());
   expect(res.status).toBe(200);
   expect(res.body.data.myAccount.id).not.toBe(null);
-
-
-  // //Parameters for switch Auth context
-  // let input = {};
-  // res = await helpers.getResponseWithAuthToken(accessToken, general.switchAuthContext())
 });
