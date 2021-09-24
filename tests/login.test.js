@@ -1,7 +1,6 @@
 const login = require('../graphql/queries/generic');
 let helpers = require('../helpers');
 const cred = require("../config/credentials.json");
-const general = require('../graphql/mutations/general');
 require('dotenv').config();
 
 test('login into CD with valid credentials', async () => {

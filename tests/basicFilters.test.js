@@ -1,7 +1,7 @@
 const login = require('../graphql/queries/generic');
 let helpers = require('../helpers');
 const cred = require("../config/credentials.json");
-const general = require('../graphql/mutations/general');
+const generic = require('../graphql/queries/generic');
 require('dotenv').config();
 
 test('verify basic filters functionality', async () => {
@@ -11,5 +11,13 @@ test('verify basic filters functionality', async () => {
   expect(res.body.data.verifyAccount.token.access).not.toBe(null);
   let accessToken = res.body.data.verifyAccount.token.access;
 
-  let res = await helpers.getResponseWithAuthToken(accessToken, general.switchAuthContext())
+  //Grab Organization Id
+  res = await helpers.getResponseWithAuthToken(accessToken, generic.myAccount());
+  expect(res.status).toBe(200);
+  expect(res.body.data.myAccount.id).not.toBe(null);
+
+
+  // //Parameters for switch Auth context
+  // let input = {};
+  // res = await helpers.getResponseWithAuthToken(accessToken, general.switchAuthContext())
 });

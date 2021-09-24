@@ -1,5 +1,4 @@
 require('dotenv').config();
-// const { query } = require('express');
 const supertest = require("supertest");
 const environmentURL = process.env.HOST;
 const request = supertest(environmentURL);
@@ -14,8 +13,3 @@ exports.getResponseWithAuthToken = (token, query) => {
     Authorization: `Bearer ${token}`
   }).send(query);
 };
-
-// exports.getResponseWithToken = query => {
-//     let res = await request.post("").send(loginQueries.verifyAccount("kavit.gamot+la@castingnetworks.com", "P@ssw0rd"));
-
-// };
