@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "types": ["jest", "node"],
+    "module": "commonjs",
+    "target": "es2020",
+    "lib": ["es2020"],
+    "removeComments": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "incremental": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "rootDir": "./",
+    "outDir": "./built"
+  },
+  "exclude": ["node_modules", "built"]
+}
