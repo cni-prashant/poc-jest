@@ -1,23 +1,34 @@
 module.exports = {
+  parser: '@typescript-eslint/parser',
+  root: true,
   env: {
-    browser: true,
-    es6: true,
     node: true,
+    jest: true,
     amd: true,
-    mocha: true
+    es6: true,
   },
-  extends: ['eslint:recommended'],
+  extends: [
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+  ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
     ecmaVersion: 2020,
-    sourceType: 'module'
+    project: 'tsconfig.json',
+    sourceType: 'module',
+    createDefaultProgram: true,
   },
-  plugins: ['mocha'],
+  plugins: ['@typescript-eslint/eslint-plugin'],
   rules: {
-    'require-atomic-updates': 'off',
-    'mocha/no-exclusive-tests': 'error'
-  }
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+  },
+  ignorePatterns: ['node_modules', 'built'],
 };

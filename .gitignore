@@ -4,9 +4,6 @@
 node_modules/
 built/
 
-# Auto-generated code
-mochawesome-report
-
 # Misc
 .DS_Store
 .env
@@ -17,3 +14,4 @@ mochawesome-report
 
 # Reports
 reports/
+junit
