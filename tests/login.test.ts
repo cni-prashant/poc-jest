@@ -1,6 +1,6 @@
 import * as login from '../graphql/queries/generic';
 import * as helpers from '../helpers';
-import * as cred from '../config/credentials.json';
+import { cred } from '../config/credentials';
 
 describe('Casting Director, login', () => {
   test('Login with valid credentials', async () => {
@@ -18,8 +18,8 @@ describe('Casting Director, login', () => {
     );
 
     expect(res.status).toBe(200);
-    expect(res.body.errors[0].message, 'QAAQAQAQ').toBe(
-      "We couldn't find an account associated with that email or username PPP",
+    expect(res.body.errors[0].message).toBe(
+      "We couldn't find an account associated with that email or username.",
     );
   });
 });
