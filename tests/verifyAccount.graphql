@@ -1,0 +1,3 @@
+query verifyAccount($input: VerifyAccountInput!) {
+    verifyAccount(input: $input)
+}
