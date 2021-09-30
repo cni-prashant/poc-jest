@@ -10,7 +10,7 @@
   "private": true,
   "scripts": {
     "generate": "graphql-codegen --config codegen.yml",
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -27,6 +27,7 @@
     "@babel/preset-typescript": "^7.15.0",
     "@graphql-codegen/cli": "2.2.0",
     "@graphql-codegen/typescript": "2.2.2",
+    "@graphql-codegen/typescript-document-nodes": "2.1.4",
     "@graphql-codegen/typescript-graphql-request": "^4.1.4",
     "@graphql-codegen/typescript-operations": "^2.1.4",
     "@types/jest": "^27.0.2",

@@ -203,13 +203,15 @@ export type AccountPaypalLocationInput = {
 };
 
 /** Account Recovery Type by EMAILANDPHONE|PROJECT|STAGE */
-export enum AccountRecoveryType {
-  EmailAndPhone = 'EmailAndPhone',
-  Phone = 'Phone',
-  Project = 'Project',
-  StageName = 'StageName',
-}
+export const AccountRecoveryType = {
+  EmailAndPhone: 'EmailAndPhone',
+  Phone: 'Phone',
+  Project: 'Project',
+  StageName: 'StageName',
+} as const;
 
+export type AccountRecoveryType =
+  typeof AccountRecoveryType[keyof typeof AccountRecoveryType];
 export type AccountStatus = {
   __typename?: 'AccountStatus';
   /** code */
@@ -310,12 +312,14 @@ export type ActivityLogNote = {
   noteModifier?: Maybe<WfBasicSettingModel>;
 };
 
-export enum ActivityLogOperation {
-  Delete = 'DELETE',
-  Insert = 'INSERT',
-  Update = 'UPDATE',
-}
+export const ActivityLogOperation = {
+  Delete: 'DELETE',
+  Insert: 'INSERT',
+  Update: 'UPDATE',
+} as const;
 
+export type ActivityLogOperation =
+  typeof ActivityLogOperation[keyof typeof ActivityLogOperation];
 export type ActivityLogOrganization = {
   __typename?: 'ActivityLogOrganization';
   abbreviation?: Maybe<Scalars['String']>;
@@ -399,22 +403,23 @@ export type ActivityLogSubmission = {
   statusName?: Maybe<Scalars['String']>;
 };
 
-export enum ActivityLogType {
-  FastCaptureNoteAdded = 'FAST_CAPTURE_NOTE_ADDED',
-  RequestAskquestion = 'REQUEST_ASKQUESTION',
-  RequestAudition = 'REQUEST_AUDITION',
-  RequestCallback = 'REQUEST_CALLBACK',
-  RequestMedia = 'REQUEST_MEDIA',
-  SubmissionAddedToAuditionGroup = 'SUBMISSION_ADDED_TO_AUDITION_GROUP',
-  SubmissionAddedToPresentationGroup = 'SUBMISSION_ADDED_TO_PRESENTATION_GROUP',
-  SubmissionCreated = 'SUBMISSION_CREATED',
-  SubmissionNoteAdded = 'SUBMISSION_NOTE_ADDED',
-  SubmissionSelectiontagAssigned = 'SUBMISSION_SELECTIONTAG_ASSIGNED',
-  SubmissionSelectiontagUpdated = 'SUBMISSION_SELECTIONTAG_UPDATED',
-  SubmissionStatusUpdated = 'SUBMISSION_STATUS_UPDATED',
-  SubmissionUpdated = 'SUBMISSION_UPDATED',
-}
+export const ActivityLogType = {
+  FastCaptureNoteAdded: 'FAST_CAPTURE_NOTE_ADDED',
+  RequestAskquestion: 'REQUEST_ASKQUESTION',
+  RequestAudition: 'REQUEST_AUDITION',
+  RequestCallback: 'REQUEST_CALLBACK',
+  RequestMedia: 'REQUEST_MEDIA',
+  SubmissionAddedToAuditionGroup: 'SUBMISSION_ADDED_TO_AUDITION_GROUP',
+  SubmissionAddedToPresentationGroup: 'SUBMISSION_ADDED_TO_PRESENTATION_GROUP',
+  SubmissionCreated: 'SUBMISSION_CREATED',
+  SubmissionNoteAdded: 'SUBMISSION_NOTE_ADDED',
+  SubmissionSelectiontagAssigned: 'SUBMISSION_SELECTIONTAG_ASSIGNED',
+  SubmissionSelectiontagUpdated: 'SUBMISSION_SELECTIONTAG_UPDATED',
+  SubmissionStatusUpdated: 'SUBMISSION_STATUS_UPDATED',
+  SubmissionUpdated: 'SUBMISSION_UPDATED',
+} as const;
 
+export type ActivityLogType = typeof ActivityLogType[keyof typeof ActivityLogType];
 export type AddArtistFreeCreditsInput = {
   artistId: Scalars['Int'];
   credits: Scalars['Int'];
@@ -1071,13 +1076,15 @@ export type AskQuestionRequestInput = {
   tileSchemeValueCodes?: Maybe<Array<Scalars['String']>>;
 };
 
-export enum AskQuestionRequestStatus {
-  Answered = 'ANSWERED',
-  Cancelled = 'CANCELLED',
-  NotSent = 'NOT_SENT',
-  Pending = 'PENDING',
-}
+export const AskQuestionRequestStatus = {
+  Answered: 'ANSWERED',
+  Cancelled: 'CANCELLED',
+  NotSent: 'NOT_SENT',
+  Pending: 'PENDING',
+} as const;
 
+export type AskQuestionRequestStatus =
+  typeof AskQuestionRequestStatus[keyof typeof AskQuestionRequestStatus];
 export type AskQuestionResponse = {
   __typename?: 'AskQuestionResponse';
   answer?: Maybe<Scalars['String']>;
@@ -1735,59 +1742,61 @@ export type BauWeight = {
   lbs: Scalars['Int'];
 };
 
-export enum BillingCode {
-  CbAnnual = 'cb_annual',
-  CbM2m = 'cb_m2m',
-  CbSemiannual = 'cb_semiannual',
-  CbmhAnnual = 'cbmh_annual',
-  CbmhM2m = 'cbmh_m2m',
-  CbmhSemiannual = 'cbmh_semiannual',
-  CbmhpuAnnual = 'cbmhpu_annual',
-  CbmhpuM2m = 'cbmhpu_m2m',
-  CbmhpuSemiannual = 'cbmhpu_semiannual',
-  CbpuAnnual = 'cbpu_annual',
-  CbpuM2m = 'cbpu_m2m',
-  CbpuSemiannual = 'cbpu_semiannual',
-  ConciergeAnnual = 'concierge_annual',
-  ConciergeM2m = 'concierge_m2m',
-  ConciergeSemiannual = 'concierge_semiannual',
-  LaCbAnnual = 'la_cb_annual',
-  LaCbM2m = 'la_cb_m2m',
-  LaCbSemiannual = 'la_cb_semiannual',
-  LaCbmhAnnual = 'la_cbmh_annual',
-  LaCbmhM2m = 'la_cbmh_m2m',
-  LaCbmhSemiannual = 'la_cbmh_semiannual',
-  LaCbmuAnnual = 'la_cbmu_annual',
-  LaCbmuM2m = 'la_cbmu_m2m',
-  LaCbmuSemiannual = 'la_cbmu_semiannual',
-  LaMhAnnual = 'la_mh_annual',
-  LaMhM2m = 'la_mh_m2m',
-  LaMhSemiannual = 'la_mh_semiannual',
-  MhAnnual = 'mh_annual',
-  MhM2m = 'mh_m2m',
-  MhSemiannual = 'mh_semiannual',
-  MhpuAnnual = 'mhpu_annual',
-  MhpuM2m = 'mhpu_m2m',
-  MhpuSemiannual = 'mhpu_semiannual',
-  PremiumAnnual = 'premium_annual',
-  PremiumComped = 'premium_comped',
-  PremiumM2m = 'premium_m2m',
-  PuAnnual = 'pu_annual',
-  PuM2m = 'pu_m2m',
-  PuSemiannual = 'pu_semiannual',
-  Registration = 'registration',
-}
+export const BillingCode = {
+  CbAnnual: 'cb_annual',
+  CbM2m: 'cb_m2m',
+  CbSemiannual: 'cb_semiannual',
+  CbmhAnnual: 'cbmh_annual',
+  CbmhM2m: 'cbmh_m2m',
+  CbmhSemiannual: 'cbmh_semiannual',
+  CbmhpuAnnual: 'cbmhpu_annual',
+  CbmhpuM2m: 'cbmhpu_m2m',
+  CbmhpuSemiannual: 'cbmhpu_semiannual',
+  CbpuAnnual: 'cbpu_annual',
+  CbpuM2m: 'cbpu_m2m',
+  CbpuSemiannual: 'cbpu_semiannual',
+  ConciergeAnnual: 'concierge_annual',
+  ConciergeM2m: 'concierge_m2m',
+  ConciergeSemiannual: 'concierge_semiannual',
+  LaCbAnnual: 'la_cb_annual',
+  LaCbM2m: 'la_cb_m2m',
+  LaCbSemiannual: 'la_cb_semiannual',
+  LaCbmhAnnual: 'la_cbmh_annual',
+  LaCbmhM2m: 'la_cbmh_m2m',
+  LaCbmhSemiannual: 'la_cbmh_semiannual',
+  LaCbmuAnnual: 'la_cbmu_annual',
+  LaCbmuM2m: 'la_cbmu_m2m',
+  LaCbmuSemiannual: 'la_cbmu_semiannual',
+  LaMhAnnual: 'la_mh_annual',
+  LaMhM2m: 'la_mh_m2m',
+  LaMhSemiannual: 'la_mh_semiannual',
+  MhAnnual: 'mh_annual',
+  MhM2m: 'mh_m2m',
+  MhSemiannual: 'mh_semiannual',
+  MhpuAnnual: 'mhpu_annual',
+  MhpuM2m: 'mhpu_m2m',
+  MhpuSemiannual: 'mhpu_semiannual',
+  PremiumAnnual: 'premium_annual',
+  PremiumComped: 'premium_comped',
+  PremiumM2m: 'premium_m2m',
+  PuAnnual: 'pu_annual',
+  PuM2m: 'pu_m2m',
+  PuSemiannual: 'pu_semiannual',
+  Registration: 'registration',
+} as const;
 
-export enum BillingItemCode {
-  AudioUpload = 'AUDIO_UPLOAD',
-  MediaUpload = 'MEDIA_UPLOAD',
-  PhotoUpload = 'PHOTO_UPLOAD',
-  Submission = 'SUBMISSION',
-  SystemAccess = 'SYSTEM_ACCESS',
-  VideoUpload = 'VIDEO_UPLOAD',
-  Registration = 'registration',
-}
+export type BillingCode = typeof BillingCode[keyof typeof BillingCode];
+export const BillingItemCode = {
+  AudioUpload: 'AUDIO_UPLOAD',
+  MediaUpload: 'MEDIA_UPLOAD',
+  PhotoUpload: 'PHOTO_UPLOAD',
+  Submission: 'SUBMISSION',
+  SystemAccess: 'SYSTEM_ACCESS',
+  VideoUpload: 'VIDEO_UPLOAD',
+  Registration: 'registration',
+} as const;
 
+export type BillingItemCode = typeof BillingItemCode[keyof typeof BillingItemCode];
 /** Billing Item Input */
 export type BillingItemInput = {
   /** Media Id */
@@ -1910,11 +1919,12 @@ export type CalendarType = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum CalendarTypeEnum {
-  Audition = 'AUDITION',
-  Callback = 'CALLBACK',
-}
+export const CalendarTypeEnum = {
+  Audition: 'AUDITION',
+  Callback: 'CALLBACK',
+} as const;
 
+export type CalendarTypeEnum = typeof CalendarTypeEnum[keyof typeof CalendarTypeEnum];
 export type CancelRequestInput = {
   note?: Maybe<Scalars['String']>;
   submissionIds?: Maybe<Array<Scalars['Int']>>;
@@ -1989,11 +1999,12 @@ export type ChatMessageModel = {
   topicKey: Scalars['String'];
 };
 
-export enum ChatMessageType {
-  System = 'System',
-  User = 'User',
-}
+export const ChatMessageType = {
+  System: 'System',
+  User: 'User',
+} as const;
 
+export type ChatMessageType = typeof ChatMessageType[keyof typeof ChatMessageType];
 export type ChatSenderAccount = {
   __typename?: 'ChatSenderAccount';
   firstName?: Maybe<Scalars['String']>;
@@ -2658,35 +2669,45 @@ export type DeleteTimeframeInput = {
   timeframeId: Scalars['Float'];
 };
 
-export enum DisplayOnlyTalentWithPicksEnum {
-  All = 'All',
-  PicksOnly = 'PicksOnly',
-}
+export const DisplayOnlyTalentWithPicksEnum = {
+  All: 'All',
+  PicksOnly: 'PicksOnly',
+} as const;
 
-export enum DisplayRoleOptionsEnum {
-  BasicRoleInformation = 'BasicRoleInformation',
-  FullRoleDetails = 'FullRoleDetails',
-}
+export type DisplayOnlyTalentWithPicksEnum =
+  typeof DisplayOnlyTalentWithPicksEnum[keyof typeof DisplayOnlyTalentWithPicksEnum];
+export const DisplayRoleOptionsEnum = {
+  BasicRoleInformation: 'BasicRoleInformation',
+  FullRoleDetails: 'FullRoleDetails',
+} as const;
 
-export enum DisplayTalentInfoOptionsEnum {
-  KidsAges = 'KidsAges',
-  PicksAndFeedback = 'PicksAndFeedback',
-  ProjectNotes = 'ProjectNotes',
-  TalentContactInfo = 'TalentContactInfo',
-  TalentRepresentationInfo = 'TalentRepresentationInfo',
-  UnionStatuses = 'UnionStatuses',
-}
+export type DisplayRoleOptionsEnum =
+  typeof DisplayRoleOptionsEnum[keyof typeof DisplayRoleOptionsEnum];
+export const DisplayTalentInfoOptionsEnum = {
+  KidsAges: 'KidsAges',
+  PicksAndFeedback: 'PicksAndFeedback',
+  ProjectNotes: 'ProjectNotes',
+  TalentContactInfo: 'TalentContactInfo',
+  TalentRepresentationInfo: 'TalentRepresentationInfo',
+  UnionStatuses: 'UnionStatuses',
+} as const;
 
-export enum DisplayTalentPerPageOptionsEnum {
-  OnePerPage = 'OnePerPage',
-  TwoPerPage = 'TwoPerPage',
-}
+export type DisplayTalentInfoOptionsEnum =
+  typeof DisplayTalentInfoOptionsEnum[keyof typeof DisplayTalentInfoOptionsEnum];
+export const DisplayTalentPerPageOptionsEnum = {
+  OnePerPage: 'OnePerPage',
+  TwoPerPage: 'TwoPerPage',
+} as const;
 
-export enum DisplayTalentPhotoOptionsEnum {
-  AuditionSnapshots = 'AuditionSnapshots',
-  Headshots = 'Headshots',
-}
+export type DisplayTalentPerPageOptionsEnum =
+  typeof DisplayTalentPerPageOptionsEnum[keyof typeof DisplayTalentPerPageOptionsEnum];
+export const DisplayTalentPhotoOptionsEnum = {
+  AuditionSnapshots: 'AuditionSnapshots',
+  Headshots: 'Headshots',
+} as const;
 
+export type DisplayTalentPhotoOptionsEnum =
+  typeof DisplayTalentPhotoOptionsEnum[keyof typeof DisplayTalentPhotoOptionsEnum];
 /** DMA for Profile */
 export type Dma = {
   __typename?: 'Dma';
@@ -2778,27 +2799,28 @@ export type EntityType = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum EntityTypeEnum {
-  Account = 'ACCOUNT',
-  Address = 'ADDRESS',
-  Artist = 'ARTIST',
-  AuditionSession = 'AUDITION_SESSION',
-  Calendar = 'CALENDAR',
-  CalendarEvent = 'CALENDAR_EVENT',
-  CalendarSlot = 'CALENDAR_SLOT',
-  Media = 'MEDIA',
-  MediaType = 'MEDIA_TYPE',
-  NotificationNature = 'NOTIFICATION_NATURE',
-  Organization = 'ORGANIZATION',
-  PaidType = 'PAID_TYPE',
-  Profile = 'PROFILE',
-  Project = 'PROJECT',
-  ProjectType = 'PROJECT_TYPE',
-  Role = 'ROLE',
-  RoleTarget = 'ROLE_TARGET',
-  Submission = 'SUBMISSION',
-}
+export const EntityTypeEnum = {
+  Account: 'ACCOUNT',
+  Address: 'ADDRESS',
+  Artist: 'ARTIST',
+  AuditionSession: 'AUDITION_SESSION',
+  Calendar: 'CALENDAR',
+  CalendarEvent: 'CALENDAR_EVENT',
+  CalendarSlot: 'CALENDAR_SLOT',
+  Media: 'MEDIA',
+  MediaType: 'MEDIA_TYPE',
+  NotificationNature: 'NOTIFICATION_NATURE',
+  Organization: 'ORGANIZATION',
+  PaidType: 'PAID_TYPE',
+  Profile: 'PROFILE',
+  Project: 'PROJECT',
+  ProjectType: 'PROJECT_TYPE',
+  Role: 'ROLE',
+  RoleTarget: 'ROLE_TARGET',
+  Submission: 'SUBMISSION',
+} as const;
 
+export type EntityTypeEnum = typeof EntityTypeEnum[keyof typeof EntityTypeEnum];
 /** EthnicAppearance object */
 export type EthnicAppearance = {
   __typename?: 'EthnicAppearance';
@@ -2814,23 +2836,25 @@ export type EthnicAppearance = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum EthnicAppearanceEnum {
-  AboriginalTorresStraitIslander = 'ABORIGINAL_TORRES_STRAIT_ISLANDER',
-  AfricanAmericanBlack = 'AFRICAN_AMERICAN_BLACK',
-  AmericanIndian = 'AMERICAN_INDIAN',
-  CaucasianWhite = 'CAUCASIAN_WHITE',
-  EasternEuropean = 'EASTERN_EUROPEAN',
-  EastAsian = 'EAST_ASIAN',
-  EastIndianSouthAsian = 'EAST_INDIAN_SOUTH_ASIAN',
-  EthnicallyAmbiguous = 'ETHNICALLY_AMBIGUOUS',
-  Latinx = 'LATINX',
-  Maori = 'MAORI',
-  Mediterranean = 'MEDITERRANEAN',
-  MiddleEastern = 'MIDDLE_EASTERN',
-  PacificIslander = 'PACIFIC_ISLANDER',
-  SoutheastAsian = 'SOUTHEAST_ASIAN',
-}
+export const EthnicAppearanceEnum = {
+  AboriginalTorresStraitIslander: 'ABORIGINAL_TORRES_STRAIT_ISLANDER',
+  AfricanAmericanBlack: 'AFRICAN_AMERICAN_BLACK',
+  AmericanIndian: 'AMERICAN_INDIAN',
+  CaucasianWhite: 'CAUCASIAN_WHITE',
+  EasternEuropean: 'EASTERN_EUROPEAN',
+  EastAsian: 'EAST_ASIAN',
+  EastIndianSouthAsian: 'EAST_INDIAN_SOUTH_ASIAN',
+  EthnicallyAmbiguous: 'ETHNICALLY_AMBIGUOUS',
+  Latinx: 'LATINX',
+  Maori: 'MAORI',
+  Mediterranean: 'MEDITERRANEAN',
+  MiddleEastern: 'MIDDLE_EASTERN',
+  PacificIslander: 'PACIFIC_ISLANDER',
+  SoutheastAsian: 'SOUTHEAST_ASIAN',
+} as const;
 
+export type EthnicAppearanceEnum =
+  typeof EthnicAppearanceEnum[keyof typeof EthnicAppearanceEnum];
 /** Eye color object */
 export type EyeColor = {
   __typename?: 'EyeColor';
@@ -2930,14 +2954,16 @@ export type GenderAppearance = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum GenderAppearanceEnum {
-  Man = 'MAN',
-  NonBinaryPerson = 'NON_BINARY_PERSON',
-  TransMan = 'TRANS_MAN',
-  TransWoman = 'TRANS_WOMAN',
-  Woman = 'WOMAN',
-}
+export const GenderAppearanceEnum = {
+  Man: 'MAN',
+  NonBinaryPerson: 'NON_BINARY_PERSON',
+  TransMan: 'TRANS_MAN',
+  TransWoman: 'TRANS_WOMAN',
+  Woman: 'WOMAN',
+} as const;
 
+export type GenderAppearanceEnum =
+  typeof GenderAppearanceEnum[keyof typeof GenderAppearanceEnum];
 /** Gender Identitie object */
 export type GenderIdentity = {
   __typename?: 'GenderIdentity';
@@ -2953,13 +2979,15 @@ export type GenderIdentity = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum GenderIdentityEnum {
-  NonBinary = 'NON_BINARY',
-  Other = 'OTHER',
-  Trans = 'TRANS',
-  Undefined = 'UNDEFINED',
-}
+export const GenderIdentityEnum = {
+  NonBinary: 'NON_BINARY',
+  Other: 'OTHER',
+  Trans: 'TRANS',
+  Undefined: 'UNDEFINED',
+} as const;
 
+export type GenderIdentityEnum =
+  typeof GenderIdentityEnum[keyof typeof GenderIdentityEnum];
 /** Input type for Gender picker */
 export type GenderInput = {
   /**
@@ -3176,11 +3204,12 @@ export type InternalWelcomeContextNotificationContextAndRecipient = {
 };
 
 /** Type of the identifier to use for dictionary lookup. */
-export enum KeyType {
-  Code = 'code',
-  Id = 'id',
-}
+export const KeyType = {
+  Code: 'code',
+  Id: 'id',
+} as const;
 
+export type KeyType = typeof KeyType[keyof typeof KeyType];
 /** Legacy Account By Profile */
 export type LegacyAccount = {
   __typename?: 'LegacyAccount';
@@ -3191,11 +3220,12 @@ export type LegacyAccount = {
 };
 
 /** Sort order for list of lists */
-export enum ListSortOrderEnum {
-  Alphabetical = 'ALPHABETICAL',
-  LastModified = 'LAST_MODIFIED',
-}
+export const ListSortOrderEnum = {
+  Alphabetical: 'ALPHABETICAL',
+  LastModified: 'LAST_MODIFIED',
+} as const;
 
+export type ListSortOrderEnum = typeof ListSortOrderEnum[keyof typeof ListSortOrderEnum];
 /** Roster type object */
 export type ListType = {
   __typename?: 'ListType';
@@ -3414,16 +3444,18 @@ export type MediaRequestInput = {
   tileSchemeValueCodes?: Maybe<Array<Scalars['String']>>;
 };
 
-export enum MediaRequestStatus {
-  Cancelled = 'CANCELLED',
-  ChangeRequested = 'CHANGE_REQUESTED',
-  Confirmed = 'CONFIRMED',
-  Declined = 'DECLINED',
-  MediaAdded = 'MEDIA_ADDED',
-  NotSent = 'NOT_SENT',
-  Pending = 'PENDING',
-}
+export const MediaRequestStatus = {
+  Cancelled: 'CANCELLED',
+  ChangeRequested: 'CHANGE_REQUESTED',
+  Confirmed: 'CONFIRMED',
+  Declined: 'DECLINED',
+  MediaAdded: 'MEDIA_ADDED',
+  NotSent: 'NOT_SENT',
+  Pending: 'PENDING',
+} as const;
 
+export type MediaRequestStatus =
+  typeof MediaRequestStatus[keyof typeof MediaRequestStatus];
 export type MediaResponse = {
   __typename?: 'MediaResponse';
   cancelledAt?: Maybe<Scalars['DateTime']>;
@@ -3457,12 +3489,14 @@ export type MediaResponsePagedList = {
   totalPages: Scalars['Int'];
 };
 
-export enum MediaResponseStatus {
-  Confirmed = 'CONFIRMED',
-  Declined = 'DECLINED',
-  MediaAdded = 'MEDIA_ADDED',
-}
+export const MediaResponseStatus = {
+  Confirmed: 'CONFIRMED',
+  Declined: 'DECLINED',
+  MediaAdded: 'MEDIA_ADDED',
+} as const;
 
+export type MediaResponseStatus =
+  typeof MediaResponseStatus[keyof typeof MediaResponseStatus];
 /** MediaStatus object */
 export type MediaStatus = {
   __typename?: 'MediaStatus';
@@ -3493,17 +3527,19 @@ export type MediaStorageStatus = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum MediaStorageStatusEnum {
-  BauMigrated = 'BAU_MIGRATED',
-  CldCleaned = 'CLD_CLEANED',
-  Downloaded = 'DOWNLOADED',
-  Downloading = 'DOWNLOADING',
-  DownloadFailed = 'DOWNLOAD_FAILED',
-  Uploaded = 'UPLOADED',
-  Uploading = 'UPLOADING',
-  UploadFailed = 'UPLOAD_FAILED',
-}
+export const MediaStorageStatusEnum = {
+  BauMigrated: 'BAU_MIGRATED',
+  CldCleaned: 'CLD_CLEANED',
+  Downloaded: 'DOWNLOADED',
+  Downloading: 'DOWNLOADING',
+  DownloadFailed: 'DOWNLOAD_FAILED',
+  Uploaded: 'UPLOADED',
+  Uploading: 'UPLOADING',
+  UploadFailed: 'UPLOAD_FAILED',
+} as const;
 
+export type MediaStorageStatusEnum =
+  typeof MediaStorageStatusEnum[keyof typeof MediaStorageStatusEnum];
 /** 'Media Sub-Request' Type for (Reps|Talent) */
 export type MediaSubRequest = {
   __typename?: 'MediaSubRequest';
@@ -3588,11 +3624,12 @@ export type MediaType = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum MediaTypeEnum {
-  Image = 'IMAGE',
-  Video = 'VIDEO',
-}
+export const MediaTypeEnum = {
+  Image: 'IMAGE',
+  Video: 'VIDEO',
+} as const;
 
+export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
 /** Media Version Types */
 export type MediaVersionType = {
   __typename?: 'MediaVersionType';
@@ -3612,11 +3649,12 @@ export type MediaVersionType = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum MicroServices {
-  Backlot = 'BACKLOT',
-  FastCapture = 'FAST_CAPTURE',
-}
+export const MicroServices = {
+  Backlot: 'BACKLOT',
+  FastCapture: 'FAST_CAPTURE',
+} as const;
 
+export type MicroServices = typeof MicroServices[keyof typeof MicroServices];
 /** Holds the Input for Deleting Submission from a Slot */
 export type MoveSubmissionFromSlotInput = {
   /** New Slot Id to which submission is moved to. */
@@ -5579,17 +5617,18 @@ export type NoteType = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum NoteTypeEnum {
-  AddIn = 'ADD_IN',
-  AdminNote = 'ADMIN_NOTE',
-  AgentNote = 'AGENT_NOTE',
-  CdTalentNote = 'CD_TALENT_NOTE',
-  FastcaptureNote = 'FASTCAPTURE_NOTE',
-  PermanentNote = 'PERMANENT_NOTE',
-  PermanentSubmissionNote = 'PERMANENT_SUBMISSION_NOTE',
-  SubmissionNote = 'SUBMISSION_NOTE',
-}
+export const NoteTypeEnum = {
+  AddIn: 'ADD_IN',
+  AdminNote: 'ADMIN_NOTE',
+  AgentNote: 'AGENT_NOTE',
+  CdTalentNote: 'CD_TALENT_NOTE',
+  FastcaptureNote: 'FASTCAPTURE_NOTE',
+  PermanentNote: 'PERMANENT_NOTE',
+  PermanentSubmissionNote: 'PERMANENT_SUBMISSION_NOTE',
+  SubmissionNote: 'SUBMISSION_NOTE',
+} as const;
 
+export type NoteTypeEnum = typeof NoteTypeEnum[keyof typeof NoteTypeEnum];
 export type Notification = {
   __typename?: 'Notification';
   context?: Maybe<NotificationContext>;
@@ -6185,18 +6224,21 @@ export type PartialBauAccountDetailsInput = {
   migratedAccountID?: Maybe<Scalars['Float']>;
 };
 
-export enum PayPreferencesEnum {
-  No = 'NO',
-  PayIsDeferred = 'PAY_IS_DEFERRED',
-  Unlisted = 'UNLISTED',
-  Yes = 'YES',
-}
+export const PayPreferencesEnum = {
+  No: 'NO',
+  PayIsDeferred: 'PAY_IS_DEFERRED',
+  Unlisted: 'UNLISTED',
+  Yes: 'YES',
+} as const;
 
-export enum PaypalLocation {
-  Au = 'AU',
-  Eu = 'EU',
-}
+export type PayPreferencesEnum =
+  typeof PayPreferencesEnum[keyof typeof PayPreferencesEnum];
+export const PaypalLocation = {
+  Au: 'AU',
+  Eu: 'EU',
+} as const;
 
+export type PaypalLocation = typeof PaypalLocation[keyof typeof PaypalLocation];
 /** Pet object */
 export type Pet = {
   __typename?: 'Pet';
@@ -7423,13 +7465,14 @@ export type ProfileFilter = {
 };
 
 /** All possible way for creating personal profile */
-export enum ProfileFromEnum {
-  New = 'NEW',
-  None = 'NONE',
-  Rep = 'REP',
-  Unrep = 'UNREP',
-}
+export const ProfileFromEnum = {
+  New: 'NEW',
+  None: 'NONE',
+  Rep: 'REP',
+  Unrep: 'UNREP',
+} as const;
 
+export type ProfileFromEnum = typeof ProfileFromEnum[keyof typeof ProfileFromEnum];
 /** Profile Gender Identity */
 export type ProfileGenderIdentity = {
   __typename?: 'ProfileGenderIdentity';
@@ -7782,26 +7825,30 @@ export type ProfileSearchResultByOrgIdPaginatedResult = {
 };
 
 /** Profile sort field options */
-export enum ProfileSearchSortField {
-  FirstName = 'FirstName',
-  LastName = 'LastName',
-  Random = 'Random',
-}
+export const ProfileSearchSortField = {
+  FirstName: 'FirstName',
+  LastName: 'LastName',
+  Random: 'Random',
+} as const;
 
+export type ProfileSearchSortField =
+  typeof ProfileSearchSortField[keyof typeof ProfileSearchSortField];
 export type ProfileSearchSortOption = {
   fieldName: ProfileSearchSortField;
   /** Default value: ASC */
   sortOrder?: Maybe<SortOrderEnum>;
 };
 
-export enum ProfileSelectionType {
-  None = 'NONE',
-  Selected = 'SELECTED',
-  SelectedForOtherRoles = 'SELECTED_FOR_OTHER_ROLES',
-  Submitted = 'SUBMITTED',
-  SubmittedForOtherRoles = 'SUBMITTED_FOR_OTHER_ROLES',
-}
+export const ProfileSelectionType = {
+  None: 'NONE',
+  Selected: 'SELECTED',
+  SelectedForOtherRoles: 'SELECTED_FOR_OTHER_ROLES',
+  Submitted: 'SUBMITTED',
+  SubmittedForOtherRoles: 'SUBMITTED_FOR_OTHER_ROLES',
+} as const;
 
+export type ProfileSelectionType =
+  typeof ProfileSelectionType[keyof typeof ProfileSelectionType];
 /** Profile Shoe Size */
 export type ProfileShoeSize = {
   __typename?: 'ProfileShoeSize';
@@ -7938,12 +7985,14 @@ export type ProfileStatus = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum ProfileStatusSearchEnum {
-  Current = 'CURRENT',
-  Former = 'FORMER',
-  FormerAndCurrent = 'FORMER_AND_CURRENT',
-}
+export const ProfileStatusSearchEnum = {
+  Current: 'CURRENT',
+  Former: 'FORMER',
+  FormerAndCurrent: 'FORMER_AND_CURRENT',
+} as const;
 
+export type ProfileStatusSearchEnum =
+  typeof ProfileStatusSearchEnum[keyof typeof ProfileStatusSearchEnum];
 /** ProfileType object */
 export type ProfileType = {
   __typename?: 'ProfileType';
@@ -8683,11 +8732,13 @@ export type ProjectStatus = {
 };
 
 /** Project status filter options */
-export enum ProjectStatusFilterEnum {
-  Archived = 'Archived',
-  Current = 'Current',
-}
+export const ProjectStatusFilterEnum = {
+  Archived: 'Archived',
+  Current: 'Current',
+} as const;
 
+export type ProjectStatusFilterEnum =
+  typeof ProjectStatusFilterEnum[keyof typeof ProjectStatusFilterEnum];
 /** Project Report Input Arguments */
 export type ProjectSubmissionCreateInput = {
   projectId: Scalars['Int'];
@@ -10859,11 +10910,13 @@ export type RepOrganizationListInput = {
 };
 
 /** Rep organization sorting enum */
-export enum RepOrganizationListSortEnum {
-  Name = 'NAME',
-  ParentName = 'PARENT_NAME',
-}
+export const RepOrganizationListSortEnum = {
+  Name: 'NAME',
+  ParentName: 'PARENT_NAME',
+} as const;
 
+export type RepOrganizationListSortEnum =
+  typeof RepOrganizationListSortEnum[keyof typeof RepOrganizationListSortEnum];
 /** Rep Get Presentation by org Response */
 export type RepPresentations = {
   __typename?: 'RepPresentations';
@@ -10874,28 +10927,31 @@ export type RepPresentations = {
 };
 
 /** Status enum for rep's worksheet */
-export enum RepRequestStatus {
-  Cancelled = 'CANCELLED',
-  CancelledRescheduled = 'CANCELLED_RESCHEDULED',
-  ChangeRequested = 'CHANGE_REQUESTED',
-  Completed = 'COMPLETED',
-  Declined = 'DECLINED',
-  NewMessage = 'NEW_MESSAGE',
-  NewRequest = 'NEW_REQUEST',
-  NotSent = 'NOT_SENT',
-  OnHold = 'ON_HOLD',
-  Pending = 'PENDING',
-  Rescheduled = 'RESCHEDULED',
-  RescheduleRequested = 'RESCHEDULE_REQUESTED',
-  ReviewResponse = 'REVIEW_RESPONSE',
-  Updated = 'UPDATED',
-}
+export const RepRequestStatus = {
+  Cancelled: 'CANCELLED',
+  CancelledRescheduled: 'CANCELLED_RESCHEDULED',
+  ChangeRequested: 'CHANGE_REQUESTED',
+  Completed: 'COMPLETED',
+  Declined: 'DECLINED',
+  NewMessage: 'NEW_MESSAGE',
+  NewRequest: 'NEW_REQUEST',
+  NotSent: 'NOT_SENT',
+  OnHold: 'ON_HOLD',
+  Pending: 'PENDING',
+  Rescheduled: 'RESCHEDULED',
+  RescheduleRequested: 'RESCHEDULE_REQUESTED',
+  ReviewResponse: 'REVIEW_RESPONSE',
+  Updated: 'UPDATED',
+} as const;
 
-export enum RepWorksheetFieldOrder {
-  DueDate = 'dueDate',
-  ReceivedAt = 'receivedAt',
-}
+export type RepRequestStatus = typeof RepRequestStatus[keyof typeof RepRequestStatus];
+export const RepWorksheetFieldOrder = {
+  DueDate: 'dueDate',
+  ReceivedAt: 'receivedAt',
+} as const;
 
+export type RepWorksheetFieldOrder =
+  typeof RepWorksheetFieldOrder[keyof typeof RepWorksheetFieldOrder];
 export type RepWorksheetItem = {
   __typename?: 'RepWorksheetItem';
   /** Date when request was created */
@@ -11098,29 +11154,31 @@ export type ReportRoleDateWithLocation = {
   startDate?: Maybe<Scalars['DateTime']>;
 };
 
-export enum ReportStatusEnum {
-  Completed = 'Completed',
-  Failed = 'Failed',
-  InProgress = 'InProgress',
-  Pending = 'Pending',
-}
+export const ReportStatusEnum = {
+  Completed: 'Completed',
+  Failed: 'Failed',
+  InProgress: 'InProgress',
+  Pending: 'Pending',
+} as const;
 
-export enum ReportTypeEnum {
-  AgencyCallList = 'AgencyCallList',
-  BookingCallList = 'BookingCallList',
-  Presentation = 'Presentation',
-  PresentationLog = 'PresentationLog',
-  PresentationPick = 'PresentationPick',
-  PresentationSizeSheets = 'PresentationSizeSheets',
-  ProjectOverview = 'ProjectOverview',
-  ProjectOverviewCd = 'ProjectOverviewCD',
-  ProjectSubmission = 'ProjectSubmission',
-  Schedule = 'Schedule',
-  ScheduleReport = 'ScheduleReport',
-  ScheduleSizeSheets = 'ScheduleSizeSheets',
-  TalentSubmission = 'TalentSubmission',
-}
+export type ReportStatusEnum = typeof ReportStatusEnum[keyof typeof ReportStatusEnum];
+export const ReportTypeEnum = {
+  AgencyCallList: 'AgencyCallList',
+  BookingCallList: 'BookingCallList',
+  Presentation: 'Presentation',
+  PresentationLog: 'PresentationLog',
+  PresentationPick: 'PresentationPick',
+  PresentationSizeSheets: 'PresentationSizeSheets',
+  ProjectOverview: 'ProjectOverview',
+  ProjectOverviewCd: 'ProjectOverviewCD',
+  ProjectSubmission: 'ProjectSubmission',
+  Schedule: 'Schedule',
+  ScheduleReport: 'ScheduleReport',
+  ScheduleSizeSheets: 'ScheduleSizeSheets',
+  TalentSubmission: 'TalentSubmission',
+} as const;
 
+export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
 export type ReportUnion =
   | AgencyCallListReportModel
   | BookingCallListsReportModel
@@ -11240,11 +11298,13 @@ export type RepresentativeSearchResult = {
 };
 
 /** Enum of Represented Talents Submissions Types */
-export enum RepsSubmissionTypeEnum {
-  Selected = 'SELECTED',
-  Submitted = 'SUBMITTED',
-}
+export const RepsSubmissionTypeEnum = {
+  Selected: 'SELECTED',
+  Submitted: 'SUBMITTED',
+} as const;
 
+export type RepsSubmissionTypeEnum =
+  typeof RepsSubmissionTypeEnum[keyof typeof RepsSubmissionTypeEnum];
 export type RepsWorksheetFilters = {
   __typename?: 'RepsWorksheetFilters';
   organizations?: Maybe<Array<OrganizationFilter>>;
@@ -11314,13 +11374,14 @@ export type Request = {
   type: RequestType;
 };
 
-export enum RequestMediaType {
-  Audio = 'AUDIO',
-  Pdf = 'PDF',
-  Photo = 'PHOTO',
-  Video = 'VIDEO',
-}
+export const RequestMediaType = {
+  Audio: 'AUDIO',
+  Pdf: 'PDF',
+  Photo: 'PHOTO',
+  Video: 'VIDEO',
+} as const;
 
+export type RequestMediaType = typeof RequestMediaType[keyof typeof RequestMediaType];
 export type RequestPagedList = {
   __typename?: 'RequestPagedList';
   data: Array<Request>;
@@ -11329,33 +11390,37 @@ export type RequestPagedList = {
   totalPages: Scalars['Int'];
 };
 
-export enum RequestSendTo {
-  NewAndPending = 'NEW_AND_PENDING',
-  OnlyNew = 'ONLY_NEW',
-}
+export const RequestSendTo = {
+  NewAndPending: 'NEW_AND_PENDING',
+  OnlyNew: 'ONLY_NEW',
+} as const;
 
-export enum RequestStatus {
-  Cancelled = 'CANCELLED',
-  NotSent = 'NOT_SENT',
-  Pending = 'PENDING',
-}
+export type RequestSendTo = typeof RequestSendTo[keyof typeof RequestSendTo];
+export const RequestStatus = {
+  Cancelled: 'CANCELLED',
+  NotSent: 'NOT_SENT',
+  Pending: 'PENDING',
+} as const;
 
-export enum RequestStatusUnion {
-  Answered = 'ANSWERED',
-  Cancelled = 'CANCELLED',
-  CancelledRescheduled = 'CANCELLED_RESCHEDULED',
-  ChangeRequested = 'CHANGE_REQUESTED',
-  Confirmed = 'CONFIRMED',
-  Declined = 'DECLINED',
-  MediaAdded = 'MEDIA_ADDED',
-  NotSent = 'NOT_SENT',
-  OnHold = 'ON_HOLD',
-  Pending = 'PENDING',
-  Rescheduled = 'RESCHEDULED',
-  RescheduleRequested = 'RESCHEDULE_REQUESTED',
-  Updated = 'UPDATED',
-}
+export type RequestStatus = typeof RequestStatus[keyof typeof RequestStatus];
+export const RequestStatusUnion = {
+  Answered: 'ANSWERED',
+  Cancelled: 'CANCELLED',
+  CancelledRescheduled: 'CANCELLED_RESCHEDULED',
+  ChangeRequested: 'CHANGE_REQUESTED',
+  Confirmed: 'CONFIRMED',
+  Declined: 'DECLINED',
+  MediaAdded: 'MEDIA_ADDED',
+  NotSent: 'NOT_SENT',
+  OnHold: 'ON_HOLD',
+  Pending: 'PENDING',
+  Rescheduled: 'RESCHEDULED',
+  RescheduleRequested: 'RESCHEDULE_REQUESTED',
+  Updated: 'UPDATED',
+} as const;
 
+export type RequestStatusUnion =
+  typeof RequestStatusUnion[keyof typeof RequestStatusUnion];
 export type RequestSubmission = {
   __typename?: 'RequestSubmission';
   /** Request ID */
@@ -11364,25 +11429,27 @@ export type RequestSubmission = {
   submissionId: Scalars['ID'];
 };
 
-export enum RequestType {
-  AskQuestion = 'ASK_QUESTION',
-  Audition = 'AUDITION',
-  Callback = 'CALLBACK',
-  Media = 'MEDIA',
-  RosterInvitation = 'ROSTER_INVITATION',
-}
+export const RequestType = {
+  AskQuestion: 'ASK_QUESTION',
+  Audition: 'AUDITION',
+  Callback: 'CALLBACK',
+  Media: 'MEDIA',
+  RosterInvitation: 'ROSTER_INVITATION',
+} as const;
 
+export type RequestType = typeof RequestType[keyof typeof RequestType];
 export type RequestUnion = AskQuestionRequest | MediaRequest;
 
-export enum ResponseStatus {
-  Answered = 'ANSWERED',
-  ChangeRequested = 'CHANGE_REQUESTED',
-  Confirmed = 'CONFIRMED',
-  Declined = 'DECLINED',
-  MediaAdded = 'MEDIA_ADDED',
-  RescheduleRequested = 'RESCHEDULE_REQUESTED',
-}
+export const ResponseStatus = {
+  Answered: 'ANSWERED',
+  ChangeRequested: 'CHANGE_REQUESTED',
+  Confirmed: 'CONFIRMED',
+  Declined: 'DECLINED',
+  MediaAdded: 'MEDIA_ADDED',
+  RescheduleRequested: 'RESCHEDULE_REQUESTED',
+} as const;
 
+export type ResponseStatus = typeof ResponseStatus[keyof typeof ResponseStatus];
 /** Role object */
 export type Role = {
   __typename?: 'Role';
@@ -11741,13 +11808,15 @@ export type RolePreviousStatus = {
   roleId: Scalars['Float'];
 };
 
-export enum RoleProjectKeywordSearchEnum {
-  All = 'ALL',
-  ProjectName = 'PROJECT_NAME',
-  ProjectOrRoleDescription = 'PROJECT_OR_ROLE_DESCRIPTION',
-  RoleName = 'ROLE_NAME',
-}
+export const RoleProjectKeywordSearchEnum = {
+  All: 'ALL',
+  ProjectName: 'PROJECT_NAME',
+  ProjectOrRoleDescription: 'PROJECT_OR_ROLE_DESCRIPTION',
+  RoleName: 'ROLE_NAME',
+} as const;
 
+export type RoleProjectKeywordSearchEnum =
+  typeof RoleProjectKeywordSearchEnum[keyof typeof RoleProjectKeywordSearchEnum];
 /** Role Publication setting */
 export type RolePublicationSetting = {
   __typename?: 'RolePublicationSetting';
@@ -11829,31 +11898,33 @@ export type RoleStatus = {
 };
 
 /** Role status codes options */
-export enum RoleStatusCodes {
-  Active = 'ACTIVE',
-  Archived = 'ARCHIVED',
-  ArchiveInProgress = 'ARCHIVE_IN_PROGRESS',
-  EditToActiveRole = 'EDIT_TO_ACTIVE_ROLE',
-  Internal = 'INTERNAL',
-  ModificationsComplete = 'MODIFICATIONS_COMPLETE',
-  ModificationsRequested = 'MODIFICATIONS_REQUESTED',
-  NewRolePending = 'NEW_ROLE_PENDING',
-  NotYetPublished = 'NOT_YET_PUBLISHED',
-  Rejected = 'REJECTED',
-  RequestingAdditionalSubmissions = 'REQUESTING_ADDITIONAL_SUBMISSIONS',
-  RestoreInProgress = 'RESTORE_IN_PROGRESS',
-  SubmissionsClosed = 'SUBMISSIONS_CLOSED',
-}
+export const RoleStatusCodes = {
+  Active: 'ACTIVE',
+  Archived: 'ARCHIVED',
+  ArchiveInProgress: 'ARCHIVE_IN_PROGRESS',
+  EditToActiveRole: 'EDIT_TO_ACTIVE_ROLE',
+  Internal: 'INTERNAL',
+  ModificationsComplete: 'MODIFICATIONS_COMPLETE',
+  ModificationsRequested: 'MODIFICATIONS_REQUESTED',
+  NewRolePending: 'NEW_ROLE_PENDING',
+  NotYetPublished: 'NOT_YET_PUBLISHED',
+  Rejected: 'REJECTED',
+  RequestingAdditionalSubmissions: 'REQUESTING_ADDITIONAL_SUBMISSIONS',
+  RestoreInProgress: 'RESTORE_IN_PROGRESS',
+  SubmissionsClosed: 'SUBMISSIONS_CLOSED',
+} as const;
 
+export type RoleStatusCodes = typeof RoleStatusCodes[keyof typeof RoleStatusCodes];
 /** Role status filter options */
-export enum RoleStatusFilter {
-  Active = 'Active',
-  All = 'All',
-  Archived = 'Archived',
-  Published = 'Published',
-  UnderReview = 'UnderReview',
-}
+export const RoleStatusFilter = {
+  Active: 'Active',
+  All: 'All',
+  Archived: 'Archived',
+  Published: 'Published',
+  UnderReview: 'UnderReview',
+} as const;
 
+export type RoleStatusFilter = typeof RoleStatusFilter[keyof typeof RoleStatusFilter];
 export type RoleSubmissionCount = {
   __typename?: 'RoleSubmissionCount';
   count: Scalars['Int'];
@@ -11889,11 +11960,12 @@ export type RoleTarget = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum RoleTargetsEnum {
-  Background = 'BACKGROUND',
-  Principal = 'PRINCIPAL',
-}
+export const RoleTargetsEnum = {
+  Background: 'BACKGROUND',
+  Principal: 'PRINCIPAL',
+} as const;
 
+export type RoleTargetsEnum = typeof RoleTargetsEnum[keyof typeof RoleTargetsEnum];
 /** RoleType  object */
 export type RoleType = {
   __typename?: 'RoleType';
@@ -12192,12 +12264,14 @@ export type RosterInvitationRequestInput = {
 };
 
 /** Roster Invitation request status */
-export enum RosterInvitationRequestStatus {
-  Expired = 'EXPIRED',
-  InRoster = 'IN_ROSTER',
-  Pending = 'PENDING',
-}
+export const RosterInvitationRequestStatus = {
+  Expired: 'EXPIRED',
+  InRoster: 'IN_ROSTER',
+  Pending: 'PENDING',
+} as const;
 
+export type RosterInvitationRequestStatus =
+  typeof RosterInvitationRequestStatus[keyof typeof RosterInvitationRequestStatus];
 export type RosterInvitationTalentHistoryFilterInput = {
   /** Filter by email */
   email: Scalars['String'];
@@ -12386,18 +12460,20 @@ export type ScheduleInviteRequestNotes = {
   noteForTalents?: Maybe<Scalars['String']>;
 };
 
-export enum ScheduleInviteRequestStatus {
-  Cancelled = 'CANCELLED',
-  CancelledRescheduled = 'CANCELLED_RESCHEDULED',
-  Confirmed = 'CONFIRMED',
-  Declined = 'DECLINED',
-  OnHold = 'ON_HOLD',
-  Pending = 'PENDING',
-  Rescheduled = 'RESCHEDULED',
-  RescheduleRequested = 'RESCHEDULE_REQUESTED',
-  Updated = 'UPDATED',
-}
+export const ScheduleInviteRequestStatus = {
+  Cancelled: 'CANCELLED',
+  CancelledRescheduled: 'CANCELLED_RESCHEDULED',
+  Confirmed: 'CONFIRMED',
+  Declined: 'DECLINED',
+  OnHold: 'ON_HOLD',
+  Pending: 'PENDING',
+  Rescheduled: 'RESCHEDULED',
+  RescheduleRequested: 'RESCHEDULE_REQUESTED',
+  Updated: 'UPDATED',
+} as const;
 
+export type ScheduleInviteRequestStatus =
+  typeof ScheduleInviteRequestStatus[keyof typeof ScheduleInviteRequestStatus];
 export type ScheduleInviteResponse = {
   __typename?: 'ScheduleInviteResponse';
   chatTopic?: Maybe<ChatTopic>;
@@ -12423,13 +12499,15 @@ export type ScheduleInviteResponseInput = {
   responseNote?: Maybe<Scalars['String']>;
 };
 
-export enum ScheduleInviteResponseStatus {
-  Confirmed = 'CONFIRMED',
-  Declined = 'DECLINED',
-  Pending = 'PENDING',
-  RescheduleRequested = 'RESCHEDULE_REQUESTED',
-}
+export const ScheduleInviteResponseStatus = {
+  Confirmed: 'CONFIRMED',
+  Declined: 'DECLINED',
+  Pending: 'PENDING',
+  RescheduleRequested: 'RESCHEDULE_REQUESTED',
+} as const;
 
+export type ScheduleInviteResponseStatus =
+  typeof ScheduleInviteResponseStatus[keyof typeof ScheduleInviteResponseStatus];
 export type ScheduleInviteResponseStatusCounts = {
   __typename?: 'ScheduleInviteResponseStatusCounts';
   confirmed: Scalars['Int'];
@@ -12497,12 +12575,13 @@ export type SchedulePaginatedResult = {
   totalPages: Scalars['Int'];
 };
 
-export enum ScheduleReceiver {
-  All = 'ALL',
-  Updated = 'UPDATED',
-  UpdatedAndUnconfirmed = 'UPDATED_AND_UNCONFIRMED',
-}
+export const ScheduleReceiver = {
+  All: 'ALL',
+  Updated: 'UPDATED',
+  UpdatedAndUnconfirmed: 'UPDATED_AND_UNCONFIRMED',
+} as const;
 
+export type ScheduleReceiver = typeof ScheduleReceiver[keyof typeof ScheduleReceiver];
 /**
  * Schedule Reminder type. The Schedule Reminder is used on getScheduleReminiders
  * context to fill in template of reminder email sending to talent
@@ -12698,11 +12777,13 @@ export type ScheduleReportTimeslotModel = {
   submissions: Array<ScheduleReportSubmissionModel>;
 };
 
-export enum ScheduleRequestType {
-  Audition = 'AUDITION',
-  Callback = 'CALLBACK',
-}
+export const ScheduleRequestType = {
+  Audition: 'AUDITION',
+  Callback: 'CALLBACK',
+} as const;
 
+export type ScheduleRequestType =
+  typeof ScheduleRequestType[keyof typeof ScheduleRequestType];
 /** Search input */
 export type ScheduleSearchInput = {
   /** List of Project Id to search in */
@@ -12847,11 +12928,12 @@ export type SearchAccountsFiltersArgs = {
   systemRoleIds?: Maybe<Array<Scalars['Int']>>;
 };
 
-export enum SearchDirection {
-  Asc = 'Asc',
-  Dsc = 'Dsc',
-}
+export const SearchDirection = {
+  Asc: 'Asc',
+  Dsc: 'Dsc',
+} as const;
 
+export type SearchDirection = typeof SearchDirection[keyof typeof SearchDirection];
 export type SearchOrganizationsFiltersArgs = {
   /** Organization name */
   name?: Maybe<Scalars['String']>;
@@ -12881,12 +12963,13 @@ export type SearchRepresentativeInput = {
   representativeTypeCodes?: Maybe<Array<Scalars['String']>>;
 };
 
-export enum SearchResultType {
-  All = 'ALL',
-  Documents = 'DOCUMENTS',
-  Facets = 'FACETS',
-}
+export const SearchResultType = {
+  All: 'ALL',
+  Documents: 'DOCUMENTS',
+  Facets: 'FACETS',
+} as const;
 
+export type SearchResultType = typeof SearchResultType[keyof typeof SearchResultType];
 /** SeekingRepresentation object */
 export type SeekingRepresentation = {
   __typename?: 'SeekingRepresentation';
@@ -13111,16 +13194,18 @@ export type SortConditionInput = {
   orderDirection: Scalars['String'];
 };
 
-export enum SortOrder {
-  Asc = 'ASC',
-  Desc = 'DESC',
-}
+export const SortOrder = {
+  Asc: 'ASC',
+  Desc: 'DESC',
+} as const;
 
-export enum SortOrderEnum {
-  Asc = 'ASC',
-  Desc = 'DESC',
-}
+export type SortOrder = typeof SortOrder[keyof typeof SortOrder];
+export const SortOrderEnum = {
+  Asc: 'ASC',
+  Desc: 'DESC',
+} as const;
 
+export type SortOrderEnum = typeof SortOrderEnum[keyof typeof SortOrderEnum];
 /** Sport Equipment object */
 export type SportEquipment = {
   __typename?: 'SportEquipment';
@@ -13274,11 +13359,13 @@ export type SubmissionCreated = {
 };
 
 /** Determine discrete boundaries for project filtering */
-export enum SubmissionDueDateSearchEnum {
-  Future = 'FUTURE',
-  Today = 'TODAY',
-}
+export const SubmissionDueDateSearchEnum = {
+  Future: 'FUTURE',
+  Today: 'TODAY',
+} as const;
 
+export type SubmissionDueDateSearchEnum =
+  typeof SubmissionDueDateSearchEnum[keyof typeof SubmissionDueDateSearchEnum];
 /** Submission Media object */
 export type SubmissionMedia = {
   __typename?: 'SubmissionMedia';
@@ -13434,15 +13521,17 @@ export type SubmissionSearchInput = {
 };
 
 /** Enum of an available columns for sorting */
-export enum SubmissionSearchSortColumn {
-  LastName = 'LAST_NAME',
-  Random = 'RANDOM',
-  Role = 'ROLE',
-  SelectionTag = 'SELECTION_TAG',
-  StageName = 'STAGE_NAME',
-  SubmittedDate = 'SUBMITTED_DATE',
-}
+export const SubmissionSearchSortColumn = {
+  LastName: 'LAST_NAME',
+  Random: 'RANDOM',
+  Role: 'ROLE',
+  SelectionTag: 'SELECTION_TAG',
+  StageName: 'STAGE_NAME',
+  SubmittedDate: 'SUBMITTED_DATE',
+} as const;
 
+export type SubmissionSearchSortColumn =
+  typeof SubmissionSearchSortColumn[keyof typeof SubmissionSearchSortColumn];
 export type SubmissionSearchSortOptionsInput = {
   /** Field name by which should be sorted */
   fieldName: SubmissionSearchSortColumn;
@@ -13465,17 +13554,19 @@ export type SubmissionStatus = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum SubmissionStatusCodeEnum {
-  Booked = 'BOOKED',
-  Draft = 'DRAFT',
-  OnAvail = 'ON_AVAIL',
-  Reviewed = 'REVIEWED',
-  Selected = 'SELECTED',
-  ToReview = 'TO_REVIEW',
-  UnderConsideration = 'UNDER_CONSIDERATION',
-  Unsubmitted = 'UNSUBMITTED',
-}
+export const SubmissionStatusCodeEnum = {
+  Booked: 'BOOKED',
+  Draft: 'DRAFT',
+  OnAvail: 'ON_AVAIL',
+  Reviewed: 'REVIEWED',
+  Selected: 'SELECTED',
+  ToReview: 'TO_REVIEW',
+  UnderConsideration: 'UNDER_CONSIDERATION',
+  Unsubmitted: 'UNSUBMITTED',
+} as const;
 
+export type SubmissionStatusCodeEnum =
+  typeof SubmissionStatusCodeEnum[keyof typeof SubmissionStatusCodeEnum];
 /** Input type for updating submission */
 export type SubmissionUpdateInput = {
   /** Profile working location id */
@@ -13550,30 +13641,32 @@ export type SystemRole = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum SystemRoleCode {
-  Agent = 'AGENT',
-  Api = 'API',
-  CastingDirector = 'CASTING_DIRECTOR',
-  LegacyUser = 'LEGACY_USER',
-  Manager = 'MANAGER',
-  ProjectCreator = 'PROJECT_CREATOR',
-  RootUser = 'ROOT_USER',
-  SharedProjectUser = 'SHARED_PROJECT_USER',
-  Talent = 'TALENT',
-}
+export const SystemRoleCode = {
+  Agent: 'AGENT',
+  Api: 'API',
+  CastingDirector: 'CASTING_DIRECTOR',
+  LegacyUser: 'LEGACY_USER',
+  Manager: 'MANAGER',
+  ProjectCreator: 'PROJECT_CREATOR',
+  RootUser: 'ROOT_USER',
+  SharedProjectUser: 'SHARED_PROJECT_USER',
+  Talent: 'TALENT',
+} as const;
 
-export enum SystemRoleEnum {
-  Agent = 'Agent',
-  Api = 'Api',
-  CastingDirector = 'CastingDirector',
-  LegacyUser = 'LegacyUser',
-  Manager = 'Manager',
-  ProjectCreator = 'ProjectCreator',
-  RootUser = 'RootUser',
-  SharedProjectUser = 'SharedProjectUser',
-  Talent = 'Talent',
-}
+export type SystemRoleCode = typeof SystemRoleCode[keyof typeof SystemRoleCode];
+export const SystemRoleEnum = {
+  Agent: 'Agent',
+  Api: 'Api',
+  CastingDirector: 'CastingDirector',
+  LegacyUser: 'LegacyUser',
+  Manager: 'Manager',
+  ProjectCreator: 'ProjectCreator',
+  RootUser: 'RootUser',
+  SharedProjectUser: 'SharedProjectUser',
+  Talent: 'Talent',
+} as const;
 
+export type SystemRoleEnum = typeof SystemRoleEnum[keyof typeof SystemRoleEnum];
 /** Tshirt Measurement object */
 export type TShirtSize = {
   __typename?: 'TShirtSize';
@@ -13684,11 +13777,12 @@ export type TalentProfileUnion = {
   talentMembershipId?: Maybe<Scalars['String']>;
 };
 
-export enum TalentStatusEnum {
-  SelectedTalent = 'SelectedTalent',
-  SubmittedTalent = 'SubmittedTalent',
-}
+export const TalentStatusEnum = {
+  SelectedTalent: 'SelectedTalent',
+  SubmittedTalent: 'SubmittedTalent',
+} as const;
 
+export type TalentStatusEnum = typeof TalentStatusEnum[keyof typeof TalentStatusEnum];
 /** Talent Submission Item Payload */
 export type TalentSubmissionItemModel = {
   __typename?: 'TalentSubmissionItemModel';
@@ -13768,78 +13862,80 @@ export type TalentUnion = {
   talentEnabled: Scalars['Boolean'];
 };
 
-export enum TalentUnionEnum {
-  Actra = 'ACTRA',
-  Aea = 'AEA',
-  Antc = 'ANTC',
-  BayAreaTheatre = 'BAY_AREA_THEATRE',
-  BusinessTheatreEvents = 'BUSINESS_THEATRE_EVENTS',
-  Cabaret = 'CABARET',
-  Caea = 'CAEA',
-  Casino = 'CASINO',
-  Cat = 'CAT',
-  Commercial = 'COMMERCIAL',
-  CorporateEducationalNonBroadcast = 'CORPORATE_EDUCATIONAL_NON_BROADCAST',
-  Corst = 'CORST',
-  Cost = 'COST',
-  DinnerTheatre = 'DINNER_THEATRE',
-  DinnerTheatreArtist = 'DINNER_THEATRE_ARTIST',
-  Disneyworld = 'DISNEYWORLD',
-  Eligible = 'ELIGIBLE',
-  Equity = 'EQUITY',
-  Ficore = 'FICORE',
-  GuestArtist = 'GUEST_ARTIST',
-  Hat = 'HAT',
-  Loa = 'LOA',
-  LoaNyc = 'LOA_NYC',
-  LortNonRep = 'LORT_NON_REP',
-  LortRep = 'LORT_REP',
-  LosAngelesTransitional_99SeatTheatreCode = 'LOS_ANGELES_TRANSITIONAL_99_SEAT_THEATRE_CODE',
-  LowBudgetFilm = 'LOW_BUDGET_FILM',
-  Meaa = 'MEAA',
-  Member = 'MEMBER',
-  MidsizeTheatres = 'MIDSIZE_THEATRES',
-  Mini = 'MINI',
-  ModifiedBat = 'MODIFIED_BAT',
-  ModifiedLowBudgetFilm = 'MODIFIED_LOW_BUDGET_FILM',
-  Msua = 'MSUA',
-  MusicVideo = 'MUSIC_VIDEO',
-  Neat = 'NEAT',
-  NewMedia = 'NEW_MEDIA',
-  Nola = 'NOLA',
-  NonUnion = 'NON_UNION',
-  NoUnionAffiliation = 'NO_UNION_AFFILIATION',
-  Oat = 'OAT',
-  OffBroadway = 'OFF_BROADWAY',
-  Other = 'OTHER',
-  OutdoorDrama = 'OUTDOOR_DRAMA',
-  ProductionDisney = 'PRODUCTION_DISNEY',
-  ProductionLeague = 'PRODUCTION_LEAGUE',
-  Rmta = 'RMTA',
-  SagAftra = 'SAG_AFTRA',
-  ShortEngagementTouringAgreement = 'SHORT_ENGAGEMENT_TOURING_AGREEMENT',
-  ShortFilm = 'SHORT_FILM',
-  ShowcaseNy = 'SHOWCASE_NY',
-  SoundRecordings = 'SOUND_RECORDINGS',
-  SpecialAgreement = 'SPECIAL_AGREEMENT',
-  SpecialAppearance = 'SPECIAL_APPEARANCE',
-  SpecialProductionCentral = 'SPECIAL_PRODUCTION_CENTRAL',
-  SpecialProductionEastern = 'SPECIAL_PRODUCTION_EASTERN',
-  SpecialProductionWestern = 'SPECIAL_PRODUCTION_WESTERN',
-  Spt = 'SPT',
-  StudentFilm = 'STUDENT_FILM',
-  Television = 'TELEVISION',
-  TheatricalFilm = 'THEATRICAL_FILM',
-  Transition = 'TRANSITION',
-  Tya = 'TYA',
-  UbcpActra = 'UBCP_ACTRA',
-  Uda = 'UDA',
-  UltraLowBudgetFilm = 'ULTRA_LOW_BUDGET_FILM',
-  Urta = 'URTA',
-  Wclo = 'WCLO',
-  Workshop = 'WORKSHOP',
-}
+export const TalentUnionEnum = {
+  Actra: 'ACTRA',
+  Aea: 'AEA',
+  Antc: 'ANTC',
+  BayAreaTheatre: 'BAY_AREA_THEATRE',
+  BusinessTheatreEvents: 'BUSINESS_THEATRE_EVENTS',
+  Cabaret: 'CABARET',
+  Caea: 'CAEA',
+  Casino: 'CASINO',
+  Cat: 'CAT',
+  Commercial: 'COMMERCIAL',
+  CorporateEducationalNonBroadcast: 'CORPORATE_EDUCATIONAL_NON_BROADCAST',
+  Corst: 'CORST',
+  Cost: 'COST',
+  DinnerTheatre: 'DINNER_THEATRE',
+  DinnerTheatreArtist: 'DINNER_THEATRE_ARTIST',
+  Disneyworld: 'DISNEYWORLD',
+  Eligible: 'ELIGIBLE',
+  Equity: 'EQUITY',
+  Ficore: 'FICORE',
+  GuestArtist: 'GUEST_ARTIST',
+  Hat: 'HAT',
+  Loa: 'LOA',
+  LoaNyc: 'LOA_NYC',
+  LortNonRep: 'LORT_NON_REP',
+  LortRep: 'LORT_REP',
+  LosAngelesTransitional_99SeatTheatreCode:
+    'LOS_ANGELES_TRANSITIONAL_99_SEAT_THEATRE_CODE',
+  LowBudgetFilm: 'LOW_BUDGET_FILM',
+  Meaa: 'MEAA',
+  Member: 'MEMBER',
+  MidsizeTheatres: 'MIDSIZE_THEATRES',
+  Mini: 'MINI',
+  ModifiedBat: 'MODIFIED_BAT',
+  ModifiedLowBudgetFilm: 'MODIFIED_LOW_BUDGET_FILM',
+  Msua: 'MSUA',
+  MusicVideo: 'MUSIC_VIDEO',
+  Neat: 'NEAT',
+  NewMedia: 'NEW_MEDIA',
+  Nola: 'NOLA',
+  NonUnion: 'NON_UNION',
+  NoUnionAffiliation: 'NO_UNION_AFFILIATION',
+  Oat: 'OAT',
+  OffBroadway: 'OFF_BROADWAY',
+  Other: 'OTHER',
+  OutdoorDrama: 'OUTDOOR_DRAMA',
+  ProductionDisney: 'PRODUCTION_DISNEY',
+  ProductionLeague: 'PRODUCTION_LEAGUE',
+  Rmta: 'RMTA',
+  SagAftra: 'SAG_AFTRA',
+  ShortEngagementTouringAgreement: 'SHORT_ENGAGEMENT_TOURING_AGREEMENT',
+  ShortFilm: 'SHORT_FILM',
+  ShowcaseNy: 'SHOWCASE_NY',
+  SoundRecordings: 'SOUND_RECORDINGS',
+  SpecialAgreement: 'SPECIAL_AGREEMENT',
+  SpecialAppearance: 'SPECIAL_APPEARANCE',
+  SpecialProductionCentral: 'SPECIAL_PRODUCTION_CENTRAL',
+  SpecialProductionEastern: 'SPECIAL_PRODUCTION_EASTERN',
+  SpecialProductionWestern: 'SPECIAL_PRODUCTION_WESTERN',
+  Spt: 'SPT',
+  StudentFilm: 'STUDENT_FILM',
+  Television: 'TELEVISION',
+  TheatricalFilm: 'THEATRICAL_FILM',
+  Transition: 'TRANSITION',
+  Tya: 'TYA',
+  UbcpActra: 'UBCP_ACTRA',
+  Uda: 'UDA',
+  UltraLowBudgetFilm: 'ULTRA_LOW_BUDGET_FILM',
+  Urta: 'URTA',
+  Wclo: 'WCLO',
+  Workshop: 'WORKSHOP',
+} as const;
 
+export type TalentUnionEnum = typeof TalentUnionEnum[keyof typeof TalentUnionEnum];
 /** Input type for talent union */
 export type TalentUnionInput = {
   unionId: Scalars['ID'];
@@ -13877,11 +13973,12 @@ export type TattooInput = {
   tattooNote?: Maybe<Scalars['String']>;
 };
 
-export enum TileSchemaEnum {
-  Default = 'Default',
-  PresentationPick = 'PresentationPick',
-}
+export const TileSchemaEnum = {
+  Default: 'Default',
+  PresentationPick: 'PresentationPick',
+} as const;
 
+export type TileSchemaEnum = typeof TileSchemaEnum[keyof typeof TileSchemaEnum];
 /** Publication Setting object */
 export type TileSchemaValue = {
   __typename?: 'TileSchemaValue';
@@ -13897,18 +13994,20 @@ export type TileSchemaValue = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
-export enum TileSchemeValueEnum {
-  Cb = 'CB',
-  PackagePick_1 = 'PACKAGE_PICK_1',
-  PresentationPick_1 = 'PRESENTATION_PICK_1',
-  'a1' = '_1',
-  'a2' = '_2',
-  'a3' = '_3',
-  'a4' = '_4',
-  'a5' = '_5',
-  'a6' = '_6',
-}
+export const TileSchemeValueEnum = {
+  Cb: 'CB',
+  PackagePick_1: 'PACKAGE_PICK_1',
+  PresentationPick_1: 'PRESENTATION_PICK_1',
+  1: '_1',
+  2: '_2',
+  3: '_3',
+  4: '_4',
+  5: '_5',
+  6: '_6',
+} as const;
 
+export type TileSchemeValueEnum =
+  typeof TileSchemeValueEnum[keyof typeof TileSchemeValueEnum];
 /** Time Zone object */
 export type TimeZone = {
   __typename?: 'TimeZone';
