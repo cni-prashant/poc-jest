@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="2" failures="0" errors="0" time="8.559">
-  <testsuite name="Casting Director, login" errors="0" failures="0" skipped="0" timestamp="2021-09-30T11:07:18" time="8.097" tests="2">
-    <testcase classname="Casting Director, login Login with valid credentials" name="Casting Director, login Login with valid credentials" time="1.736">
+<testsuites name="jest tests" tests="7" failures="0" errors="0" time="15.532">
+  <testsuite name="Casting Director, login" errors="0" failures="0" skipped="0" timestamp="2021-10-04T18:09:26" time="4.388" tests="2">
+    <testcase classname="Casting Director, login Login with valid credentials" name="Casting Director, login Login with valid credentials" time="0.751">
     </testcase>
-    <testcase classname="Casting Director, login Login with invalid credentials" name="Casting Director, login Login with invalid credentials" time="0.998">
+    <testcase classname="Casting Director, login Login with invalid credentials" name="Casting Director, login Login with invalid credentials" time="0.397">
+    </testcase>
+  </testsuite>
+  <testsuite name="Reps, basic filters" errors="0" failures="0" skipped="0" timestamp="2021-10-04T18:09:26" time="14.6" tests="5">
+    <testcase classname="Reps, basic filters search using stage name" name="Reps, basic filters search using stage name" time="0.604">
+    </testcase>
+    <testcase classname="Reps, basic filters search using gender as man" name="Reps, basic filters search using gender as man" time="4.157">
+    </testcase>
+    <testcase classname="Reps, basic filters search using ethnic appearance as Black" name="Reps, basic filters search using ethnic appearance as Black" time="1.652">
+    </testcase>
+    <testcase classname="Reps, basic filters search using union status as AEA" name="Reps, basic filters search using union status as AEA" time="0.573">
+    </testcase>
+    <testcase classname="Reps, basic filters search a Black Man with AEA union" name="Reps, basic filters search a Black Man with AEA union" time="0.492">
     </testcase>
   </testsuite>
 </testsuites>

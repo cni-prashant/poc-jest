@@ -1,0 +1,279 @@
+query myAccount {
+  myAccount {
+    id
+    firstName
+    lastName
+    countryId
+    email
+    isAdmin
+    country {
+      id
+      code
+      name
+      continent {
+        id
+        __typename
+      }
+      unitSystem {
+        id
+        code
+        __typename
+      }
+      __typename
+    }
+    artists {
+      minor
+      artistId
+      created
+      profiles {
+        profileId
+        stageName
+        dateOfBirth
+        created
+        isPersonal
+        isPlayableAgeLockedToTalent
+        profileStatus {
+          id
+          code
+          name
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    isIPC
+    organizations {
+      id
+      features {
+        id
+        code
+        name
+        enabled
+        __typename
+      }
+      __typename
+    }
+    divisions {
+      id
+      name
+      logo {
+        id
+        fileKey
+        guid
+        mediaType {
+          id
+          code
+          __typename
+        }
+        mediaStatus {
+          id
+          code
+          __typename
+        }
+        __typename
+      }
+      isOrganization
+      parentOrganization {
+        id
+        name
+        logo {
+          id
+          fileKey
+          guid
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    timeZone {
+      id
+      code
+      standardName
+      __typename
+    }
+    __typename
+  }
+}
+
+mutation switchAuthContext(
+  $refreshToken: String!
+  $role: SystemRoleCode
+  $artistId: Int
+  $organizationId: Int
+) {
+  switchAuthContext(
+    refreshToken: $refreshToken
+    role: $role
+    artistId: $artistId
+    organizationId: $organizationId
+  ) {
+    access
+    refresh
+    __typename
+  }
+}
+
+query SearchProfiles(
+  $page: PageInput
+  $input: ProfileSearchInput!
+  $sortOptions: [ProfileSearchSortOption!]
+  $excludeAudioVideo: Boolean!
+  $showProfileRepsLists: Boolean! = false
+) {
+  searchProfiles(page: $page, input: $input, sortOptions: $sortOptions) {
+    totalCount
+    profiles {
+      ...RosterProfile
+      hasVideoReel
+      hasAudioReel
+      contactInfo {
+        phone
+        email
+        __typename
+      }
+      talentEmail
+      profileLists @include(if: $showProfileRepsLists)
+      cover {
+        id
+        guid
+        fileKey
+        mediaStorageStatus {
+          id
+          code
+          __typename
+        }
+        fileType {
+          id
+          code
+          __typename
+        }
+        isLocked
+        thumbnail {
+          id
+          guid
+          fileKey
+          transformation {
+            xAxis
+            yAxis
+            width
+            height
+            rotate
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+fragment RosterProfile on Profile {
+  id
+  profileId
+  stageName
+  minor
+  dateOfBirth
+  isOverscaled
+  overscaleNote
+  talentEmail
+  contactInfo {
+    phone
+    email
+    __typename
+  }
+  genderAppearances {    
+    id   
+    code 
+    name    
+    __typename  
+  }
+  ethnicAppearances {    
+    id   
+    code 
+    name    
+    __typename  
+  }
+  accessGranted
+  isDeactivatedByReps
+  profileStatus {
+    id
+    code
+    __typename
+  }
+  height {
+    cm
+    IMPERIAL_FEET_INCHES
+    showInImperialUI
+    __typename
+  }
+  weight {
+    IMPERIAL_LBS
+    kgRounded
+    showInMetricUI
+    __typename
+  }
+  talentUnions {
+    name
+    sortOrder
+    id
+    code
+    parentObject {
+      id
+      name
+      __typename
+    }
+    __typename
+  }
+  hasResume
+  creditsCount
+  conflicts {
+    profileConflictId
+    expiration
+    code
+    __typename
+  }
+  profileBookOuts {
+    profileBookoutId
+    startDate
+    endDate
+    __typename
+  }
+  audios @skip(if: $excludeAudioVideo) {
+    id
+    profileMediaId
+    isPrimary
+    media {
+      id
+      mediaId
+      __typename
+    }
+    __typename
+  }
+  videos @skip(if: $excludeAudioVideo) {
+    id
+    profileMediaId
+    isPrimary
+    media {
+      id
+      mediaId
+      __typename
+    }
+    __typename
+  }
+  lastNote {
+    id
+    comment
+    noteModifier {
+      id
+      code
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
