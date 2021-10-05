@@ -154,7 +154,7 @@ const config: Config.InitialOptions = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ['<rootDir>/tests/**/*.[jt]s?(x)', '<rootDir>/?(*.)+(spec|test).[tj]s?(x)'],
+  testMatch: ['<rootDir>/features/**/*.+(spec|test).[tj]s?(x)'],
   testTimeout: 60000,
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped

@@ -1,20 +1,10 @@
 import * as dotenv from 'dotenv';
-import * as supertest from 'supertest';
+import { getSdk } from './sdk';
+const result: any = dotenv.config().parsed;
+import { GraphQLClient } from 'graphql-request';
 
-dotenv.config();
-const environmentURL = process.env.HOST;
-const request = supertest(environmentURL);
-
-export function getResponse(query) {
-  return request.post('/graphql').send(query);
-}
-
-export function getResponseWithAuthToken(token: string, query) {
-  return request
-    .post('/graphql')
-    .set({
-      'content-type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    })
-    .send(query);
+export async function getSdkResponse() {
+  const client = new GraphQLClient(result.GRAPHQL_URL);
+  const sdk = getSdk(client);
+  return sdk;
 }
