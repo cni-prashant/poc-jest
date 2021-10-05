@@ -8288,6 +8288,7 @@ export type Project = {
   internalName?: Maybe<Scalars['String']>;
   isAuditionInPerson?: Maybe<Scalars['Boolean']>;
   isSpecificLocation?: Maybe<Scalars['Boolean']>;
+  lastModifiedAt: Scalars['DateTime'];
   /** Last Role Published Date */
   lastRolePublishedDate?: Maybe<Scalars['DateTime']>;
   /** Legacy instance ID */
@@ -8432,6 +8433,7 @@ export type ProjectBase = {
   id: Scalars['ID'];
   /** Project internal name */
   internalName?: Maybe<Scalars['String']>;
+  lastModifiedAt: Scalars['DateTime'];
   /** Project name */
   name?: Maybe<Scalars['String']>;
   /** Project type */
@@ -15307,12 +15309,638 @@ export type Willingness = {
   sortOrder?: Maybe<Scalars['Int']>;
 };
 
+export type MyAccountQueryVariables = Exact<{ [key: string]: never }>;
+
+export type MyAccountQuery = {
+  __typename?: 'Query';
+  myAccount: {
+    __typename: 'Account';
+    id: number;
+    firstName: string;
+    lastName: string;
+    countryId: number;
+    email: string;
+    isAdmin: boolean;
+    isIPC: boolean;
+    country?: Maybe<{
+      __typename: 'Country';
+      id: string;
+      code: string;
+      name: string;
+      continent: { __typename: 'Continent'; id: string };
+      unitSystem: { __typename: 'UnitSystem'; id: string; code: string };
+    }>;
+    artists: Array<{
+      __typename: 'Artist';
+      minor: boolean;
+      artistId: number;
+      created: any;
+      profiles?: Maybe<
+        Array<{
+          __typename: 'Profile';
+          profileId: string;
+          stageName: string;
+          dateOfBirth?: Maybe<any>;
+          created?: Maybe<any>;
+          isPersonal: boolean;
+          isPlayableAgeLockedToTalent: boolean;
+          profileStatus?: Maybe<{
+            __typename: 'ProfileStatus';
+            id: string;
+            code: string;
+            name: string;
+          }>;
+        }>
+      >;
+    }>;
+    organizations?: Maybe<
+      Array<{
+        __typename: 'Organization';
+        id: number;
+        features?: Maybe<
+          Array<{
+            __typename: 'Feature';
+            id: string;
+            code: string;
+            name: string;
+            enabled: boolean;
+          }>
+        >;
+      }>
+    >;
+    divisions?: Maybe<
+      Array<{
+        __typename: 'Organization';
+        id: number;
+        name?: Maybe<string>;
+        isOrganization?: Maybe<boolean>;
+        logo?: Maybe<{
+          __typename: 'Media';
+          id: string;
+          fileKey?: Maybe<string>;
+          guid: string;
+          mediaType?: Maybe<{ __typename: 'MediaType'; id: string; code: string }>;
+          mediaStatus: { __typename: 'MediaStatus'; id: string; code: string };
+        }>;
+        parentOrganization?: Maybe<{
+          __typename: 'Organization';
+          id: number;
+          name?: Maybe<string>;
+          logo?: Maybe<{
+            __typename: 'Media';
+            id: string;
+            fileKey?: Maybe<string>;
+            guid: string;
+          }>;
+        }>;
+      }>
+    >;
+    timeZone?: Maybe<{
+      __typename: 'TimeZone';
+      id: string;
+      code: string;
+      standardName: string;
+    }>;
+  };
+};
+
+export type SwitchAuthContextMutationVariables = Exact<{
+  refreshToken: Scalars['String'];
+  role?: Maybe<SystemRoleCode>;
+  artistId?: Maybe<Scalars['Int']>;
+  organizationId?: Maybe<Scalars['Int']>;
+}>;
+
+export type SwitchAuthContextMutation = {
+  __typename?: 'Mutation';
+  switchAuthContext: { __typename: 'AuthToken'; access: string; refresh: string };
+};
+
+export type SearchProfilesQueryVariables = Exact<{
+  page?: Maybe<PageInput>;
+  input: ProfileSearchInput;
+  sortOptions?: Maybe<Array<ProfileSearchSortOption> | ProfileSearchSortOption>;
+  excludeAudioVideo: Scalars['Boolean'];
+  showProfileRepsLists?: Scalars['Boolean'];
+}>;
+
+export type SearchProfilesQuery = {
+  __typename?: 'Query';
+  searchProfiles?: Maybe<{
+    __typename: 'ProfileSearch';
+    totalCount?: Maybe<number>;
+    profiles?: Maybe<
+      Array<{
+        __typename: 'Profile';
+        hasVideoReel?: Maybe<boolean>;
+        hasAudioReel?: Maybe<boolean>;
+        talentEmail?: Maybe<string>;
+        profileLists?: Maybe<Array<number>>;
+        id: string;
+        profileId: string;
+        stageName: string;
+        minor?: Maybe<boolean>;
+        dateOfBirth?: Maybe<any>;
+        isOverscaled: boolean;
+        overscaleNote?: Maybe<string>;
+        accessGranted: boolean;
+        isDeactivatedByReps?: Maybe<boolean>;
+        hasResume?: Maybe<boolean>;
+        creditsCount: number;
+        contactInfo?: Maybe<{
+          __typename: 'ProfileContactInfo';
+          phone?: Maybe<string>;
+          email?: Maybe<string>;
+        }>;
+        cover?: Maybe<{
+          __typename: 'Media';
+          id: string;
+          guid: string;
+          fileKey?: Maybe<string>;
+          isLocked?: Maybe<boolean>;
+          mediaStorageStatus: {
+            __typename: 'MediaStorageStatus';
+            id: string;
+            code: string;
+          };
+          fileType: { __typename: 'MediaFileType'; id: string; code: string };
+          thumbnail?: Maybe<{
+            __typename: 'Media';
+            id: string;
+            guid: string;
+            fileKey?: Maybe<string>;
+            transformation?: Maybe<{
+              __typename: 'MediaTransformation';
+              xAxis?: Maybe<number>;
+              yAxis?: Maybe<number>;
+              width?: Maybe<number>;
+              height?: Maybe<number>;
+              rotate?: Maybe<number>;
+            }>;
+          }>;
+        }>;
+        genderAppearances?: Maybe<
+          Array<{
+            __typename: 'GenderAppearance';
+            id: string;
+            code: string;
+            name: string;
+          }>
+        >;
+        ethnicAppearances?: Maybe<
+          Array<{
+            __typename: 'ProfileEthnicAppearance';
+            id: string;
+            code: string;
+            name: string;
+          }>
+        >;
+        profileStatus?: Maybe<{ __typename: 'ProfileStatus'; id: string; code: string }>;
+        height?: Maybe<{
+          __typename: 'Height';
+          cm: number;
+          IMPERIAL_FEET_INCHES?: Maybe<string>;
+          showInImperialUI: boolean;
+        }>;
+        weight?: Maybe<{
+          __typename: 'Weight';
+          IMPERIAL_LBS: number;
+          kgRounded: number;
+          showInMetricUI: boolean;
+        }>;
+        talentUnions?: Maybe<
+          Array<{
+            __typename: 'TalentProfileUnion';
+            name: string;
+            sortOrder?: Maybe<number>;
+            id: string;
+            code: string;
+            parentObject?: Maybe<{ __typename: 'TalentUnion'; id: string; name: string }>;
+          }>
+        >;
+        conflicts: Array<{
+          __typename: 'ProfileConflict';
+          profileConflictId?: Maybe<number>;
+          expiration?: Maybe<any>;
+          code?: Maybe<string>;
+        }>;
+        profileBookOuts: Array<{
+          __typename: 'ProfileBookOuts';
+          profileBookoutId?: Maybe<number>;
+          startDate?: Maybe<any>;
+          endDate?: Maybe<any>;
+        }>;
+        audios?: Maybe<
+          Array<{
+            __typename: 'ProfileMedia';
+            id: string;
+            profileMediaId: number;
+            isPrimary: boolean;
+            media: { __typename: 'Media'; id: string; mediaId: number };
+          }>
+        >;
+        videos?: Maybe<
+          Array<{
+            __typename: 'ProfileMedia';
+            id: string;
+            profileMediaId: number;
+            isPrimary: boolean;
+            media: { __typename: 'Media'; id: string; mediaId: number };
+          }>
+        >;
+        lastNote?: Maybe<{
+          __typename: 'Note';
+          id: number;
+          comment: string;
+          noteModifier?: Maybe<{ __typename: 'NoteModifier'; id: string; code: string }>;
+        }>;
+      }>
+    >;
+  }>;
+};
+
+export type RosterProfileFragment = {
+  __typename: 'Profile';
+  id: string;
+  profileId: string;
+  stageName: string;
+  minor?: Maybe<boolean>;
+  dateOfBirth?: Maybe<any>;
+  isOverscaled: boolean;
+  overscaleNote?: Maybe<string>;
+  talentEmail?: Maybe<string>;
+  accessGranted: boolean;
+  isDeactivatedByReps?: Maybe<boolean>;
+  hasResume?: Maybe<boolean>;
+  creditsCount: number;
+  contactInfo?: Maybe<{
+    __typename: 'ProfileContactInfo';
+    phone?: Maybe<string>;
+    email?: Maybe<string>;
+  }>;
+  genderAppearances?: Maybe<
+    Array<{ __typename: 'GenderAppearance'; id: string; code: string; name: string }>
+  >;
+  ethnicAppearances?: Maybe<
+    Array<{
+      __typename: 'ProfileEthnicAppearance';
+      id: string;
+      code: string;
+      name: string;
+    }>
+  >;
+  profileStatus?: Maybe<{ __typename: 'ProfileStatus'; id: string; code: string }>;
+  height?: Maybe<{
+    __typename: 'Height';
+    cm: number;
+    IMPERIAL_FEET_INCHES?: Maybe<string>;
+    showInImperialUI: boolean;
+  }>;
+  weight?: Maybe<{
+    __typename: 'Weight';
+    IMPERIAL_LBS: number;
+    kgRounded: number;
+    showInMetricUI: boolean;
+  }>;
+  talentUnions?: Maybe<
+    Array<{
+      __typename: 'TalentProfileUnion';
+      name: string;
+      sortOrder?: Maybe<number>;
+      id: string;
+      code: string;
+      parentObject?: Maybe<{ __typename: 'TalentUnion'; id: string; name: string }>;
+    }>
+  >;
+  conflicts: Array<{
+    __typename: 'ProfileConflict';
+    profileConflictId?: Maybe<number>;
+    expiration?: Maybe<any>;
+    code?: Maybe<string>;
+  }>;
+  profileBookOuts: Array<{
+    __typename: 'ProfileBookOuts';
+    profileBookoutId?: Maybe<number>;
+    startDate?: Maybe<any>;
+    endDate?: Maybe<any>;
+  }>;
+  audios?: Maybe<
+    Array<{
+      __typename: 'ProfileMedia';
+      id: string;
+      profileMediaId: number;
+      isPrimary: boolean;
+      media: { __typename: 'Media'; id: string; mediaId: number };
+    }>
+  >;
+  videos?: Maybe<
+    Array<{
+      __typename: 'ProfileMedia';
+      id: string;
+      profileMediaId: number;
+      isPrimary: boolean;
+      media: { __typename: 'Media'; id: string; mediaId: number };
+    }>
+  >;
+  lastNote?: Maybe<{
+    __typename: 'Note';
+    id: number;
+    comment: string;
+    noteModifier?: Maybe<{ __typename: 'NoteModifier'; id: string; code: string }>;
+  }>;
+};
+
 export type VerifyAccountQueryVariables = Exact<{
   input: VerifyAccountInput;
 }>;
 
 export type VerifyAccountQuery = { __typename?: 'Query'; verifyAccount: any };
 
+export const RosterProfileFragmentDoc = gql`
+  fragment RosterProfile on Profile {
+    id
+    profileId
+    stageName
+    minor
+    dateOfBirth
+    isOverscaled
+    overscaleNote
+    talentEmail
+    contactInfo {
+      phone
+      email
+      __typename
+    }
+    genderAppearances {
+      id
+      code
+      name
+      __typename
+    }
+    ethnicAppearances {
+      id
+      code
+      name
+      __typename
+    }
+    accessGranted
+    isDeactivatedByReps
+    profileStatus {
+      id
+      code
+      __typename
+    }
+    height {
+      cm
+      IMPERIAL_FEET_INCHES
+      showInImperialUI
+      __typename
+    }
+    weight {
+      IMPERIAL_LBS
+      kgRounded
+      showInMetricUI
+      __typename
+    }
+    talentUnions {
+      name
+      sortOrder
+      id
+      code
+      parentObject {
+        id
+        name
+        __typename
+      }
+      __typename
+    }
+    hasResume
+    creditsCount
+    conflicts {
+      profileConflictId
+      expiration
+      code
+      __typename
+    }
+    profileBookOuts {
+      profileBookoutId
+      startDate
+      endDate
+      __typename
+    }
+    audios @skip(if: $excludeAudioVideo) {
+      id
+      profileMediaId
+      isPrimary
+      media {
+        id
+        mediaId
+        __typename
+      }
+      __typename
+    }
+    videos @skip(if: $excludeAudioVideo) {
+      id
+      profileMediaId
+      isPrimary
+      media {
+        id
+        mediaId
+        __typename
+      }
+      __typename
+    }
+    lastNote {
+      id
+      comment
+      noteModifier {
+        id
+        code
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+`;
+export const MyAccountDocument = gql`
+  query myAccount {
+    myAccount {
+      id
+      firstName
+      lastName
+      countryId
+      email
+      isAdmin
+      country {
+        id
+        code
+        name
+        continent {
+          id
+          __typename
+        }
+        unitSystem {
+          id
+          code
+          __typename
+        }
+        __typename
+      }
+      artists {
+        minor
+        artistId
+        created
+        profiles {
+          profileId
+          stageName
+          dateOfBirth
+          created
+          isPersonal
+          isPlayableAgeLockedToTalent
+          profileStatus {
+            id
+            code
+            name
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      isIPC
+      organizations {
+        id
+        features {
+          id
+          code
+          name
+          enabled
+          __typename
+        }
+        __typename
+      }
+      divisions {
+        id
+        name
+        logo {
+          id
+          fileKey
+          guid
+          mediaType {
+            id
+            code
+            __typename
+          }
+          mediaStatus {
+            id
+            code
+            __typename
+          }
+          __typename
+        }
+        isOrganization
+        parentOrganization {
+          id
+          name
+          logo {
+            id
+            fileKey
+            guid
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      timeZone {
+        id
+        code
+        standardName
+        __typename
+      }
+      __typename
+    }
+  }
+`;
+export const SwitchAuthContextDocument = gql`
+  mutation switchAuthContext(
+    $refreshToken: String!
+    $role: SystemRoleCode
+    $artistId: Int
+    $organizationId: Int
+  ) {
+    switchAuthContext(
+      refreshToken: $refreshToken
+      role: $role
+      artistId: $artistId
+      organizationId: $organizationId
+    ) {
+      access
+      refresh
+      __typename
+    }
+  }
+`;
+export const SearchProfilesDocument = gql`
+  query SearchProfiles(
+    $page: PageInput
+    $input: ProfileSearchInput!
+    $sortOptions: [ProfileSearchSortOption!]
+    $excludeAudioVideo: Boolean!
+    $showProfileRepsLists: Boolean! = false
+  ) {
+    searchProfiles(page: $page, input: $input, sortOptions: $sortOptions) {
+      totalCount
+      profiles {
+        ...RosterProfile
+        hasVideoReel
+        hasAudioReel
+        contactInfo {
+          phone
+          email
+          __typename
+        }
+        talentEmail
+        profileLists @include(if: $showProfileRepsLists)
+        cover {
+          id
+          guid
+          fileKey
+          mediaStorageStatus {
+            id
+            code
+            __typename
+          }
+          fileType {
+            id
+            code
+            __typename
+          }
+          isLocked
+          thumbnail {
+            id
+            guid
+            fileKey
+            transformation {
+              xAxis
+              yAxis
+              width
+              height
+              rotate
+              __typename
+            }
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+  ${RosterProfileFragmentDoc}
+`;
 export const VerifyAccountDocument = gql`
   query verifyAccount($input: VerifyAccountInput!) {
     verifyAccount(input: $input)
@@ -15331,6 +15959,46 @@ export function getSdk(
   withWrapper: SdkFunctionWrapper = defaultWrapper,
 ) {
   return {
+    myAccount(
+      variables?: MyAccountQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<MyAccountQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<MyAccountQuery>(MyAccountDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'myAccount',
+      );
+    },
+    switchAuthContext(
+      variables: SwitchAuthContextMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<SwitchAuthContextMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<SwitchAuthContextMutation>(
+            SwitchAuthContextDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'switchAuthContext',
+      );
+    },
+    SearchProfiles(
+      variables: SearchProfilesQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<SearchProfilesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<SearchProfilesQuery>(SearchProfilesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'SearchProfiles',
+      );
+    },
     verifyAccount(
       variables: VerifyAccountQueryVariables,
       requestHeaders?: Dom.RequestInit['headers'],

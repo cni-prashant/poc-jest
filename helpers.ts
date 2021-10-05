@@ -8,3 +8,12 @@ export async function getSdkResponse() {
   const sdk = getSdk(client);
   return sdk;
 }
+
+export async function getSdkResponseWithToken(token) {
+  const client = new GraphQLClient(result.GRAPHQL_URL).setHeader(
+    'Authorization',
+    `Bearer ${token}`,
+  );
+  const sdk = getSdk(client);
+  return sdk;
+}
